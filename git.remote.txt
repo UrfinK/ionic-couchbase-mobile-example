@@ -1,0 +1,2 @@
+origin	https://github.com/hxtpoe/ionic-couchbase-mobile-example (fetch)
+origin	https://github.com/hxtpoe/ionic-couchbase-mobile-example (push)
