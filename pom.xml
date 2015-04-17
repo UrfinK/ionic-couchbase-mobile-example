@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.godyo.ra2000</groupId>
+	<artifactId>koucz</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<properties>
+	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<phonegap-build.username>n.kalbe@godyo.com</phonegap-build.username>
+		<phonegap-build.password>develop$$234</phonegap-build.password>
+	</properties>
+
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<!-- In der Mobile App gibt es keine web.xml -->
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<!-- Die Sourcen liegen auch nicht unter src/main/webapp/, sondern im 
+						www-Verzeichnis -->
+					<warSourceDirectory>${basedir}/www</warSourceDirectory>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>com.github.chrisprice</groupId>
+				<artifactId>phonegap-build-maven-plugin</artifactId>
+				<version>0.0.8</version>
+				<executions>
+					<execution>
+						<id>phonegap-build</id>
+						<goals>
+							<goal>build</goal>
+						</goals>
+						<configuration>
+
+							<!-- Die config.xml liegt ebenfalls im www-Verzeichnis -->
+							<configFile>www/config.xml</configFile>
+
+							<!-- Name des hochzuladenen Zips -->
+							<zipFile>mobileOrderEntry.zip</zipFile>
+
+							<!-- Auflistung aller Plattformen, für die gebaut werden soll -->
+							<platforms>
+								<platform>ios</platform>
+							</platforms>
+
+							<iOsKeyId>
+								303751
+							</iOsKeyId>
+
+							<iOsMobileProvision>signing/ios/ra2000godyo.mobileprovision</iOsMobileProvision>
+
+							<appId>1366155</appId>
+
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
